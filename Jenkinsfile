@@ -24,7 +24,7 @@ pipeline {
             steps {
                 echo 'code Testing is starting'
                 sh 'mvn clean test'
-				echo 'code Testing is completed'
+				echo 'code Test is completed'
             }
         }
 
