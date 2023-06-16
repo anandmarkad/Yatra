@@ -21,7 +21,7 @@ pipeline {
 
         stage('Code Test') {
             steps {
-                echo 'code Testing is starting'
+                echo 'code Test is starting'
                 sh 'mvn clean test'
 				echo 'code Test is completed'
             }
