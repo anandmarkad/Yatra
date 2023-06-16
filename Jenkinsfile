@@ -19,6 +19,15 @@ pipeline {
             }
         }
 
+    stages {
+        stage('Code Test') {
+            steps {
+                echo 'code Testing is starting'
+                sh 'mvn clean test'
+				echo 'code Testing is completed'
+            }
+        }
+
         stage('Code Package') {
             steps {
                 echo 'code packing is starting'
