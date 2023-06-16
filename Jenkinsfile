@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Code Test') {
+        stage('Code Testing') {
             steps {
                 echo 'code Testing is starting'
                 sh 'mvn clean test'
