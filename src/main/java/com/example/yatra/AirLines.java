@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AirLines {
     @GetMapping("/AirLines")
     public String getData() {
-        return "Airoplane mai CNG nahi hai....";
+        return "Thanks for using Airline ticket booking service....";
     }
 }
