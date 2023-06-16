@@ -19,7 +19,6 @@ pipeline {
             }
         }
 
-    stages {
         stage('Code Test') {
             steps {
                 echo 'code Testing is starting'
