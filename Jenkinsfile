@@ -67,16 +67,15 @@ pipeline {
                    steps {
                       script {
                          withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"https://559220132560.dkr.ecr.ap-south-1.amazonaws.com"]){
-                         sh """
                          echo "List the docker images present in local"
-                         docker images
+                         sh 'docker images'
                          echo "Tagging the Docker Image: In Progress"
-                         docker tag yatra:v1.1 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra:v1.1
+                         sh 'docker tag yatra:v1.1 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra:v1.1'
                          echo "Tagging the Docker Image: Completed"
                          echo "Push Docker Image to ECR : In Progress"
-                         docker push 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra:v1.1
+                         sh 'docker push 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra:v1.1'
                          echo "Push Docker Image to ECR : Completed"
-                         """
+
                          }
                       }
                    }
