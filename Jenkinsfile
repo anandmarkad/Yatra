@@ -39,7 +39,6 @@ pipeline {
                     steps {
                         echo 'Starting Building Docker Image'
                         sh 'docker build -t anandmarkad4/yatra .'
-//                         sh 'docker build -t yatra .'
                         echo 'Completed  Building Docker Image'
                     }
                 }
@@ -50,7 +49,7 @@ pipeline {
                         echo 'Docker Image Scanning Started'
                     }
                 }
-                stage(' Docker push to Docker Hub') {
+         stage(' Docker push to Docker Hub') {
                    steps {
                       script {
                          withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')]){
@@ -63,7 +62,8 @@ pipeline {
                       }
                     }
                 }
-                stage(' Docker Image Push to Amazon ECR') {
+
+        stage(' Docker Image Push to Amazon ECR') {
                    steps {
                       script {
                          withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"https://559220132560.dkr.ecr.ap-south-1.amazonaws.com"]){
@@ -80,5 +80,5 @@ pipeline {
                       }
                    }
                 }
-        }
+    }
 }
