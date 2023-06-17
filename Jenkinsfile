@@ -34,24 +34,25 @@ pipeline {
 				echo 'code packing is completed'
             }
         }
-        stage('Building & Tag Docker Image') {
+                    stage('Building & Tag Docker Image') {
                             steps {
                                 echo 'Starting Building Docker Image'
                                 sh 'docker build -t anandmarkad4/yatra .'
                                 echo 'Completed  Building Docker Image'
                             }
-                        }
+                    }
                 stage('Docker Image Scanning') {
                             steps {
                                 echo 'Docker Image Scanning Started'
                                 sh 'docker scan anandmarkad4/yatra:v1.1'
                                 echo 'Docker Image Scanning Started'
                             }
-                        }
+                }
                  stage(' Docker push to Docker Hub') {
                            steps {
                               script {
-                                 withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')]){
+                                 withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')])
+                                 {
                                  sh 'docker login docker.io -u anandmarkad4 -p ${dockerhubCred}'
                                  echo "Push Docker Image to DockerHub : In Progress"
                                  sh 'docker push anandmarkad4/yatra:v1.1'
@@ -59,13 +60,14 @@ pipeline {
                                  sh 'whoami'
                                  }
                               }
-                            }
-                        }
+                           }
+                 }
 
                 stage(' Docker Image Push to Amazon ECR') {
                            steps {
                               script {
-                                 withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"https://559220132560.dkr.ecr.ap-south-1.amazonaws.com"]){
+                                 withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"https://559220132560.dkr.ecr.ap-south-1.amazonaws.com"])
+                                 {
                                  echo "List the docker images present in local"
                                  sh 'docker images'
                                  echo "Tagging the Docker Image: In Progress"
@@ -74,10 +76,9 @@ pipeline {
                                  echo "Push Docker Image to ECR : In Progress"
                                  sh 'docker push 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra:v1.1'
                                  echo "Push Docker Image to ECR : Completed"
-
                                  }
                               }
                            }
-                        }
+                }
     }
 }
