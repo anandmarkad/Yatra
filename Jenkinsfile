@@ -5,7 +5,7 @@ pipeline {
          artifactNumToKeepStr: '5'))
     }
 
-    agent any
+    agent {label 'Jenkins_S'}
     tools {
         maven 'maven_3.8.8'
     }
