@@ -36,14 +36,14 @@ pipeline {
                     stage('Building & Tag Docker Image') {
                             steps {
                                 echo 'Starting Building Docker Image'
-                                sh 'docker build -t anandmarkad4/yatra:v1.1 .'
+                                sh 'docker build -t anandmarkad4/yatra .'
                                 echo 'Completed  Building Docker Image'
                             }
                     }
                 stage('Docker Image Scanning') {
                             steps {
                                 echo 'Docker Image Scanning Started'
-                                sh 'docker scan anandmarkad4/yatra:v1.1'
+                                sh 'docker scan anandmarkad4/yatra'
                                 echo 'Docker Image Scanning Started'
                             }
                 }
@@ -54,7 +54,7 @@ pipeline {
                                  {
                                  sh 'docker login docker.io -u anandmarkad4 -p ${dockerhubCred}'
                                  echo "Push Docker Image to DockerHub : In Progress"
-                                 sh 'docker push anandmarkad4/yatra:v1.1'
+                                 sh 'docker push anandmarkad4/yatra'
                                  echo "Push Docker Image to DockerHub : In Progress"
                                  sh 'whoami'
                                  }
@@ -70,10 +70,10 @@ pipeline {
                                  echo "List the docker images present in local"
                                  sh 'docker images'
                                  echo "Tagging the Docker Image: In Progress"
-                                 sh 'docker tag yatra:v1.1 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra:v1.1'
+                                 sh 'docker tag yatra:v1.1 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra'
                                  echo "Tagging the Docker Image: Completed"
                                  echo "Push Docker Image to ECR : In Progress"
-                                 sh 'docker push 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra:v1.1'
+                                 sh 'docker push 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra'
                                  echo "Push Docker Image to ECR : Completed"
                                  }
                               }
