@@ -18,7 +18,6 @@ pipeline {
 				echo 'code compilation is completed'
             }
         }
-
         stage('Code Test') {
             steps {
                 echo 'code Test is starting'
