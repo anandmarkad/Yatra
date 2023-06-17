@@ -36,7 +36,7 @@ pipeline {
                     stage('Building & Tag Docker Image') {
                             steps {
                                 echo 'Starting Building Docker Image'
-                                sh 'docker build -t anandmarkad4/yatra .'
+                                sh 'docker build -t anandmarkad4/yatra:v1.1 .'
                                 echo 'Completed  Building Docker Image'
                             }
                     }
