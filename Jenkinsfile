@@ -36,15 +36,15 @@ pipeline {
                     stage('Building & Tag Docker Image') {
                             steps {
                                 echo 'Starting Building Docker Image'
-                                sh 'service docker start'
-                                sh 'docker build -t anandmarkad4/yatra .'
+                                sh 'docker build -t anandmarkad4/yatra .''
+                                sh 'docker build -t yatra .'
                                 echo 'Completed  Building Docker Image'
                             }
                     }
                 stage('Docker Image Scanning') {
                             steps {
                                 echo 'Docker Image Scanning Started'
-                                sh 'docker scan anandmarkad4/yatra'
+                                sh 'java --version'
                                 echo 'Docker Image Scanning Started'
                             }
                 }
