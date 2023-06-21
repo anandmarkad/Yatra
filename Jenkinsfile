@@ -55,7 +55,7 @@ pipeline {
                                  {
                                  sh 'docker login docker.io -u anandmarkad4 -p ${dockerhubCred}'
                                  echo "Push Docker Image to DockerHub : In Progress"
-                                 sh 'docker push anandmarkad4/yatra'
+                                 sh 'docker push anandmarkad4/yatra:latest'
                                  echo "Push Docker Image to DockerHub : In Progress"
                                  sh 'whoami'
                                  }
@@ -71,10 +71,10 @@ pipeline {
                                  echo "List the docker images present in local"
                                  sh 'docker images'
                                  echo "Tagging the Docker Image: In Progress"
-                                 sh 'docker tag yatra:v1.1 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra'
+                                 sh 'docker tag yatra:latest public.ecr.aws/a7j4w5s4/yatra:latest'
                                  echo "Tagging the Docker Image: Completed"
                                  echo "Push Docker Image to ECR : In Progress"
-                                 sh 'docker push 433608937744.dkr.ecr.us-east-1.amazonaws.com/yatra'
+                                 sh 'docker push public.ecr.aws/a7j4w5s4/yatra:latest'
                                  echo "Push Docker Image to ECR : Completed"
                                  }
                               }
